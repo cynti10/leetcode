@@ -1,0 +1,22 @@
+class Solution {
+public:
+    ListNode* mergeNodes(ListNode* head) {
+        ListNode* a=head;
+        ListNode* dummy=new ListNode(0);
+        ListNode* b=dummy;
+        int count=0;
+        a=a->next;
+        while(a!=nullptr)
+        {
+            count+=a->val;
+            if(a->val==0)
+            {
+                b->next=new ListNode(count);
+                b=b->next;
+                count=0;
+            }
+            a=a->next;
+        }
+        return dummy->next;
+    }
+};
