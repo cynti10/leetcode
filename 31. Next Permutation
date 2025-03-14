@@ -1,0 +1,20 @@
+class Solution(object):
+    def nextPermutation(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: None Do not return anything, modify nums in-place instead.
+        """
+        i=len(nums)-2
+        while i>=0:
+            if nums[i]<nums[i+1]:
+                m=float('inf')
+                c=i
+                for j in range(i+1,len(nums)):
+                    if min(m,nums[j])==nums[j] and nums[j]>nums[i]:
+                        m=nums[j]
+                        c=j
+                nums[i],nums[c]=nums[c],nums[i]
+                break
+            i-=1
+        nums[i+1:]=reversed(nums[i+1:])
+        
