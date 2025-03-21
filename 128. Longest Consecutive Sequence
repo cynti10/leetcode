@@ -1,0 +1,21 @@
+class Solution(object):
+    def longestConsecutive(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        nums=list(set(nums))
+        nums.sort()
+        m,c=0,0
+        if len(nums)<=1:
+            return len(nums)
+        for i in range(len(nums)-1):
+            if nums[i]==nums[i+1]-1:
+                c+=1
+            else:
+                c=0
+            m=max(m,c)
+        if m!=0:
+            return m+1
+        else:
+            return 1
